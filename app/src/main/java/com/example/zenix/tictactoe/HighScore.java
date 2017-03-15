@@ -1,5 +1,6 @@
 package com.example.zenix.tictactoe;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +25,8 @@ public class HighScore extends AppCompatActivity {
     }
 
     private void handleIntent() {
-
+        Intent intent = getIntent();
+        currentPlayer = intent.getStringExtra(GameBoard.CURRENT_PLAYER);
     }
 
     private void initComponents() {

@@ -1,10 +1,14 @@
 package com.example.zenix.tictactoe;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class GameBoard extends AppCompatActivity {
+
+    public static final String CURRENT_PLAYER = "currentPlayer";
 
     private Button buttonRestart;
     private Button buttonHighScore;
@@ -24,7 +28,9 @@ public class GameBoard extends AppCompatActivity {
     }
 
     private void handleIntent() {
-
+        Intent intent = getIntent();
+        playerOneName = intent.getStringExtra(InputScreen.PLAYER_ONE);
+        playerTwoName = intent.getStringExtra(InputScreen.PLAYER_TWO);
     }
 
     private void initComponents() {
@@ -34,6 +40,23 @@ public class GameBoard extends AppCompatActivity {
     }
 
     private void initListeners() {
+        buttonHighScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startHighScoreActivity();
+            }
+        });
+        buttonNewGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
 
+    private void startHighScoreActivity() {
+        Intent intent = new Intent(this, HighScore.class);
+        intent.putExtra(CURRENT_PLAYER, playerTwoName);
+        startActivity(intent);
     }
 }

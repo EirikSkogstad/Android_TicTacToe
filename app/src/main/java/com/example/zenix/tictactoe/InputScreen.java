@@ -1,5 +1,6 @@
 package com.example.zenix.tictactoe;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class InputScreen extends AppCompatActivity {
+
+    public static final String PLAYER_ONE = "playerOne";
+    public static final String PLAYER_TWO = "playerTwo";
 
     private EditText editTextPlayerOne;
     private EditText editTextPlayerTwo;
@@ -49,12 +53,19 @@ public class InputScreen extends AppCompatActivity {
         if (InputValidator.isEditTextEmpty(editTextPlayerTwo)) {
             return false;
         }
+        if (InputValidator.isEditTextContentEqual(editTextPlayerOne, editTextPlayerTwo)) {
+            return false;
+        }
         return true;
     }
 
 
 
     private void startGameBoardActivity() {
+        Intent intent = new Intent(this, GameBoard.class);
+        intent.putExtra(PLAYER_ONE, editTextPlayerOne.getText().toString());
+        intent.putExtra(PLAYER_TWO, editTextPlayerTwo.getText().toString());
 
+        startActivity(intent);
     }
 }

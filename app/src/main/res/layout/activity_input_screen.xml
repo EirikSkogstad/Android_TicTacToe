@@ -11,7 +11,7 @@
         android:layout_width="107dp"
         android:layout_height="30dp"
         android:text="@string/player_one_text"
-        android:textSize="20sp"
+        android:textSize="@dimen/heading_size"
         android:layout_marginTop="81dp"
         android:layout_marginLeft="35dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -24,7 +24,7 @@
         android:layout_marginLeft="0dp"
         android:layout_marginTop="41dp"
         android:text="@string/player_two_text"
-        android:textSize="20sp"
+        android:textSize="@dimen/heading_size"
         app:layout_constraintLeft_toLeftOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -74,7 +74,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/input_screen_text"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="@dimen/heading_size"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -3,4 +3,11 @@
     <string name="player_one">PlayerOne:</string>
     <string name="player_two">Playertwo:</string>
     <string name="error_empty_input">Player names cannot be empty!</string>
+    <string name="new_game_text">New Game</string>
+    <string name="high_score_text">High Score</string>
+    <string name="restart_text">Restart</string>
+    <string name="play_text">Play</string>
+    <string name="input_screen_text">Please fill in both player\'s names.</string>
+    <string name="player_one_text">Player one:</string>
+    <string name="player_two_text">Player two:</string>
 </resources>

@@ -4,8 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.util.LinkedHashMap;
 
 public class HighScore extends AppCompatActivity {
 
@@ -22,6 +28,8 @@ public class HighScore extends AppCompatActivity {
         handleIntent();
         initComponents();
         initListeners();
+
+        loadHighScores();
     }
 
     private void handleIntent() {
@@ -41,6 +49,16 @@ public class HighScore extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void loadHighScores() {
+        FileHandler fileHandler = new FileHandler(this);
+        getLayoutInflater();
+        try {
+            fileHandler.readHighScores();
+        } catch (FileNotFoundException e) {
+            Toast.makeText(this, "Problems reading HighScores. Please try entering this screen again.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

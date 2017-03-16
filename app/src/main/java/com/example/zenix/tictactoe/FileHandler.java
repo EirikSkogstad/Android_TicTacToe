@@ -11,12 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import static android.R.attr.filter;
-
 /**
  * Helper class for saving and reading data from files.
  */
-
 public class FileHandler {
 
     private static final String HIGHSCORE_FILE_NAME = "/highscore.txt";
@@ -77,5 +74,4 @@ public class FileHandler {
         }
 
     }
-
 }

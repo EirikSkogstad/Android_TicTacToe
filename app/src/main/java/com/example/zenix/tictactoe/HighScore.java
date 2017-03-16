@@ -3,6 +3,7 @@ package com.example.zenix.tictactoe;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,6 @@ import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 
 public class HighScore extends AppCompatActivity {
-
     private Button buttonBack;
     private RecyclerView recyclerView_HighScores;
 
@@ -40,6 +40,7 @@ public class HighScore extends AppCompatActivity {
     private void initComponents() {
         buttonBack = (Button) findViewById(R.id.button_back);
         recyclerView_HighScores = (RecyclerView) findViewById(R.id.recyclerView_highScores);
+        recyclerView_HighScores.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void initListeners() {

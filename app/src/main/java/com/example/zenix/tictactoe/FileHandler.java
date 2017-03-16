@@ -60,7 +60,7 @@ public class FileHandler {
      * @param highScores Map containting playername as key, and value as value.
      * @throws IOException If problems occur during writing of files.
      */
-    private void saveHighScores(Map<String, Integer> highScores) throws IOException {
+    public void saveHighScores(Map<String, Integer> highScores) throws IOException {
         if (!highScoreFile.exists()) {
             highScoreFile.createNewFile();
         }

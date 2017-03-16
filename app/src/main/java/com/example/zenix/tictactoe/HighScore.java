@@ -12,13 +12,16 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class HighScore extends AppCompatActivity {
     private Button buttonBack;
     private RecyclerView recyclerView_HighScores;
 
     private String currentPlayer;
+    private Map<String, Integer> scores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,12 @@ public class HighScore extends AppCompatActivity {
         initListeners();
 
         loadHighScores();
+        //scores.put("Bob", 200);
+        //scores.put("Carl", 13);
+        //scores.put("Sam", 7);
+        if (!scores.isEmpty()) {
+            initAdapter();
+        }
     }
 
     private void handleIntent() {
@@ -43,6 +52,10 @@ public class HighScore extends AppCompatActivity {
         recyclerView_HighScores.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    private void initAdapter() {
+        recyclerView_HighScores.setAdapter(new HighScoreAdapter(scores));
+    }
+
     private void initListeners() {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,9 +67,9 @@ public class HighScore extends AppCompatActivity {
 
     private void loadHighScores() {
         FileHandler fileHandler = new FileHandler(this);
-        getLayoutInflater();
+        scores = new HashMap<>();
         try {
-            fileHandler.readHighScores();
+            scores = fileHandler.readHighScores();
         } catch (FileNotFoundException e) {
             Toast.makeText(this, "Problems reading HighScores. Please try entering this screen again.", Toast.LENGTH_SHORT).show();
         }

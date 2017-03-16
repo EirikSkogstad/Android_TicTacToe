@@ -3,24 +3,27 @@ package com.example.zenix.tictactoe;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
+import android.test.AndroidTestCase;
 
 import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FileHandlerTest extends TestCase {
+@RunWith(AndroidJunit4.class) // FIXME add AndroidSupportTesing library.
+public class FileHandlerTest extends AndroidTestCase {
 
     private FileHandler fileHandler;
 
     @Before
     public void setUp() throws Exception {
-        Context instrumentationContext = new Instrumentation().getContext();
+        Context instrumentationContext = new InstrumentationRegistry().getContext();
         fileHandler = new FileHandler(instrumentationContext);
 
     }

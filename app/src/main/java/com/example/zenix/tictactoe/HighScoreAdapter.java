@@ -2,10 +2,12 @@ package com.example.zenix.tictactoe;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +15,6 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Used in HighScore's RecyclerView
@@ -70,7 +71,7 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
     }
 
     // Creds for guide: https://www.raywenderlich.com/126528/android-recyclerview-tutorial
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textViewPlayerName;
         private TextView textViewPlayerScore;
 
@@ -79,11 +80,17 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
 
             textViewPlayerName = (TextView) view.findViewById(R.id.textView_playerName);
             textViewPlayerScore = (TextView) view.findViewById(R.id.textView_playerScore);
+            view.setOnClickListener(this);
         }
 
         public void bindContent(PlayerData playerData) {
             textViewPlayerName.setText(playerData.getPlayerName());
             textViewPlayerScore.setText(playerData.getPlayerScoreAsString());
+        }
+
+        @Override
+        public void onClick(View v) {
+            v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         }
     }
 

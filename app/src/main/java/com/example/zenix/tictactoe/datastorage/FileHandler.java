@@ -1,4 +1,4 @@
-package com.example.zenix.tictactoe;
+package com.example.zenix.tictactoe.datastorage;
 
 import android.content.Context;
 
@@ -15,6 +15,7 @@ import java.util.Scanner;
  * Helper class for saving and reading data from files.
  */
 public class FileHandler {
+    //FIXME needs to take into account new scores from existing user. Update the existing data.
 
     private static final String HIGHSCORE_FILE_NAME = "/highscore.txt";
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");

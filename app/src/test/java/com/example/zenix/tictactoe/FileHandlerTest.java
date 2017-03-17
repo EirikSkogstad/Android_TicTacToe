@@ -1,11 +1,9 @@
 package com.example.zenix.tictactoe;
 
-import android.app.Instrumentation;
 import android.content.Context;
-import android.content.Intent;
 import android.test.AndroidTestCase;
 
-import junit.framework.TestCase;
+import com.example.zenix.tictactoe.datastorage.FileHandler;
 
 import org.junit.After;
 import org.junit.Before;
@@ -59,10 +57,6 @@ public class FileHandlerTest extends AndroidTestCase {
 
     @Test
     public void testReadHighScore_NonExistentEntry() {
-
-    }
-
-    private void saveToFile() {
 
     }
 

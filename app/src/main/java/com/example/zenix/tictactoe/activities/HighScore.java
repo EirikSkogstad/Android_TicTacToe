@@ -1,19 +1,21 @@
-package com.example.zenix.tictactoe;
+package com.example.zenix.tictactoe.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.zenix.tictactoe.HighScoreAdapter;
+import com.example.zenix.tictactoe.R;
+import com.example.zenix.tictactoe.datastorage.FileHandler;
+
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class HighScore extends AppCompatActivity {
@@ -33,9 +35,7 @@ public class HighScore extends AppCompatActivity {
         initListeners();
 
         loadHighScores();
-        scores.put("Bob", 200);
-        scores.put("Bobby Carl the Fifth of his name", 13);
-        scores.put("Sam", 7);
+
         if (!scores.isEmpty()) {
             initAdapter();
         }
@@ -68,10 +68,17 @@ public class HighScore extends AppCompatActivity {
     private void loadHighScores() {
         FileHandler fileHandler = new FileHandler(this);
         scores = new HashMap<>();
+        Map<String, Integer> testScores = new HashMap<>();
+        testScores.put("Bob", 200);
+        testScores.put("Bobby Carl the Fifth of his name", 13);
+        testScores.put("Sam", 7);
         try {
+            fileHandler.saveHighScores(testScores);
             scores = fileHandler.readHighScores();
         } catch (FileNotFoundException e) {
             Toast.makeText(this, "Problems reading HighScores. Please try entering this screen again.", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            Toast.makeText(this, "Problems saving highscore Test data", Toast.LENGTH_SHORT).show();
         }
     }
 

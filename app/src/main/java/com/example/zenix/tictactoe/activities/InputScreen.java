@@ -1,4 +1,4 @@
-package com.example.zenix.tictactoe;
+package com.example.zenix.tictactoe.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.zenix.tictactoe.InputValidator;
+import com.example.zenix.tictactoe.R;
 
 public class InputScreen extends AppCompatActivity {
 

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.zenix.tictactoe.HighScoreAdapter;
 import com.example.zenix.tictactoe.R;
 import com.example.zenix.tictactoe.datastorage.FileHandler;
+import com.example.zenix.tictactoe.datastorage.IOInterface;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -66,15 +67,15 @@ public class HighScore extends AppCompatActivity {
     }
 
     private void loadHighScores() {
-        FileHandler fileHandler = new FileHandler(this);
+        IOInterface ioInterface = new FileHandler(this);
         scores = new HashMap<>();
         Map<String, Integer> testScores = new HashMap<>();
         testScores.put("Bob", 200);
         testScores.put("Bobby Carl the Fifth of his name", 13);
         testScores.put("Sam", 7);
         try {
-            fileHandler.saveHighScores(testScores);
-            scores = fileHandler.readHighScores();
+            ioInterface.saveHighScores(testScores);
+            scores = ioInterface.readHighScores();
         } catch (FileNotFoundException e) {
             Toast.makeText(this, "Problems reading HighScores. Please try entering this screen again.", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {

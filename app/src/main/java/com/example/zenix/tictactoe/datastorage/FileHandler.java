@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * Helper class for saving and reading data from files.
  */
-public class FileHandler {
+public class FileHandler implements IOInterface {
     //FIXME needs to take into account new scores from existing user. Update the existing data.
 
     private static final String HIGHSCORE_FILE_NAME = "/highscore.txt";

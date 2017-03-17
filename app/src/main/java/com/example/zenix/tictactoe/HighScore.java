@@ -33,9 +33,9 @@ public class HighScore extends AppCompatActivity {
         initListeners();
 
         loadHighScores();
-        //scores.put("Bob", 200);
-        //scores.put("Carl", 13);
-        //scores.put("Sam", 7);
+        scores.put("Bob", 200);
+        scores.put("Bobby Carl the Fifth of his name", 13);
+        scores.put("Sam", 7);
         if (!scores.isEmpty()) {
             initAdapter();
         }

@@ -83,7 +83,7 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
 
         public void bindContent(PlayerData playerData) {
             textViewPlayerName.setText(playerData.getPlayerName());
-            textViewPlayerName.setText(playerData.getPlayerScoreAsString());
+            textViewPlayerScore.setText(playerData.getPlayerScoreAsString());
         }
     }
 

@@ -24,14 +24,14 @@
 
     <Button
         android:id="@+id/button_high_score"
-        android:layout_width="210dp"
+        android:layout_width="185dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="-1dp"
         android:layout_marginEnd="7dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="142dp"
         android:text="@string/high_score_text"
         app:layout_constraintBottom_toTopOf="@+id/button_new_game"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="-6dp" />
 
     <Button
         android:id="@+id/button_new_game"
@@ -50,12 +50,12 @@
 
     <Button
         android:id="@+id/button_restart"
-        android:layout_width="182dp"
+        android:layout_width="185dp"
         android:layout_height="48dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/restart_text"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/button_new_game" />
+        app:layout_constraintBottom_toTopOf="@+id/button_new_game"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

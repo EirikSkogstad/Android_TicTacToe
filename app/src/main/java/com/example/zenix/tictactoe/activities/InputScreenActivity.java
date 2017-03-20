@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.zenix.tictactoe.InputValidator;
 import com.example.zenix.tictactoe.R;
 
-public class InputScreen extends AppCompatActivity {
+public class InputScreenActivity extends AppCompatActivity {
 
     public static final String PLAYER_ONE = "playerOne";
     public static final String PLAYER_TWO = "playerTwo";
@@ -43,7 +43,7 @@ public class InputScreen extends AppCompatActivity {
                 if (isPlayerInputValid()) {
                     startGameBoardActivity();
                 } else {
-                    Toast.makeText(InputScreen.this, R.string.error_empty_input, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputScreenActivity.this, R.string.error_empty_input, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -65,7 +65,7 @@ public class InputScreen extends AppCompatActivity {
 
 
     private void startGameBoardActivity() {
-        Intent intent = new Intent(this, GameBoard.class);
+        Intent intent = new Intent(this, GameBoardActivity.class);
         intent.putExtra(PLAYER_ONE, editTextPlayerOne.getText().toString());
         intent.putExtra(PLAYER_TWO, editTextPlayerTwo.getText().toString());
 

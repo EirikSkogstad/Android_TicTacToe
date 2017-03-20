@@ -3,18 +3,20 @@ package com.example.zenix.tictactoe.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.zenix.tictactoe.R;
 
-public class GameBoard extends AppCompatActivity {
+public class GameBoardActivity extends AppCompatActivity {
 
     public static final String CURRENT_PLAYER = "currentPlayer";
 
     private Button buttonRestart;
     private Button buttonHighScore;
     private Button buttonNewGame;
+    private RecyclerView recyclerView_gameBoard;
 
     private String playerOneName;
     private String playerTwoName;
@@ -31,14 +33,15 @@ public class GameBoard extends AppCompatActivity {
 
     private void handleIntent() {
         Intent intent = getIntent();
-        playerOneName = intent.getStringExtra(InputScreen.PLAYER_ONE);
-        playerTwoName = intent.getStringExtra(InputScreen.PLAYER_TWO);
+        playerOneName = intent.getStringExtra(InputScreenActivity.PLAYER_ONE);
+        playerTwoName = intent.getStringExtra(InputScreenActivity.PLAYER_TWO);
     }
 
     private void initComponents() {
         buttonRestart = (Button) findViewById(R.id.button_restart);
         buttonHighScore = (Button) findViewById(R.id.button_high_score);
         buttonNewGame = (Button) findViewById(R.id.button_new_game);
+        recyclerView_gameBoard = (RecyclerView) findViewById(R.id.recyclerView_gameBoard);
     }
 
     private void initListeners() {
@@ -57,7 +60,7 @@ public class GameBoard extends AppCompatActivity {
     }
 
     private void startHighScoreActivity() {
-        Intent intent = new Intent(this, HighScore.class);
+        Intent intent = new Intent(this, HighScoreActivity.class);
         intent.putExtra(CURRENT_PLAYER, playerTwoName);
         startActivity(intent);
     }

@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HighScore extends AppCompatActivity {
+public class HighScoreActivity extends AppCompatActivity {
     private Button buttonBack;
     private RecyclerView recyclerView_HighScores;
 
@@ -44,7 +44,7 @@ public class HighScore extends AppCompatActivity {
 
     private void handleIntent() {
         Intent intent = getIntent();
-        currentPlayer = intent.getStringExtra(GameBoard.CURRENT_PLAYER);
+        currentPlayer = intent.getStringExtra(GameBoardActivity.CURRENT_PLAYER);
     }
 
     private void initComponents() {

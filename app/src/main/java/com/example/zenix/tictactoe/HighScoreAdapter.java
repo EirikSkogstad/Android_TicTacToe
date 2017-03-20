@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Used in HighScore's RecyclerView
+ * Used in HighScoreActivity's RecyclerView
  */
 public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Adapter<HighScoreAdapter.ViewHolder> {
 

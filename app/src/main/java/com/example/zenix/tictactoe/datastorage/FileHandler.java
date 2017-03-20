@@ -29,7 +29,7 @@ public class FileHandler implements IOInterface {
     }
 
     /**
-     * Tries to read the HighScore file if it can be found.
+     * Tries to read the HighScoreActivity file if it can be found.
      * @return Map with playerName and playerScore.
      * @throws FileNotFoundException if file cannot be found.
      */

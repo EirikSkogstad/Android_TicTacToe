@@ -5,15 +5,41 @@ import java.util.ArrayList;
 class GameRow {
     private ArrayList<GameSymbol> symbols;
 
-    public GameRow(int index1, int index2, int index3) {
+    public GameRow(GameSymbol... symbols) {
+        validateInput(symbols);
+        addSymbolsToList(symbols);
+    }
+
+    private static void validateInput(GameSymbol[] symbols) {
+        if (symbols.length > 3 || symbols.length < 1) {
+            throw new IllegalArgumentException("Illegal amount of symbols..");
+        }
+    }
+
+    private void addSymbolsToList(GameSymbol[] symbols) {
         this.symbols = new ArrayList<>();
-        symbols.add(index1);
-        symbols.add(index2);
-        symbols.add(index3);
+        for (GameSymbol symbol : symbols) {
+            this.symbols.add(symbol);
+        }
     }
 
     public boolean isFilled() {
+        for (GameSymbol symbol : symbols) {
+            if (symbol == GameSymbol.EMPTY) {
+                return false;
+            }
+        }
+        return true;
+    }
 
+    public boolean hasWinner() {
+        return isWinner(GameSymbol.O) || isWinner(GameSymbol.X);
+    }
+
+    private boolean isWinner(GameSymbol gameSymbol) {
+        return symbols.get(0) == gameSymbol
+                && symbols.get(1) == gameSymbol
+                && symbols.get(2) == gameSymbol;
     }
 
 }

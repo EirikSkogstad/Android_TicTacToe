@@ -47,6 +47,4 @@ public class GameBoard {
             currentPlayer = GameSymbol.X;
         }
     }
-
-
 }

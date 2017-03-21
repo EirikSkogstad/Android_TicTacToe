@@ -1,18 +1,18 @@
-package com.example.zenix.tictactoe;
+package com.example.zenix.tictactoe.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.zenix.tictactoe.PlayerData;
+import com.example.zenix.tictactoe.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,12 +42,12 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
             @Override
             public int compare(PlayerData o1, PlayerData o2) {
                 if (o1.getPlayerScore() < o2.getPlayerScore()) {
-                    return -1;
+                    return 1;
                 }
                 if (o1.getPlayerScore() == o2.getPlayerScore()) {
                     return 0;
                 }
-                return 1;
+                return -1;
             }
         });
     }

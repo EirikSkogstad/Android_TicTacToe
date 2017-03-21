@@ -7,6 +7,7 @@ public class GameBoard {
     private GameSymbol currentPlayer;
     private ArrayList<GameSymbol> board;
     private ArrayList<GameRow> rows;
+    private boolean gameDraw;
 
     public GameBoard() {
         initBoard();
@@ -36,7 +37,33 @@ public class GameBoard {
     public void updateBoard(int index) {
         board.set(index, currentPlayer);
 
+
+        if (isGameOver()) {
+            if (isGameDraw()) {
+                // Signal acitvity, no winner.
+            }
+            else {
+                // Signal activity, currenPlayer == winner.
+            }
+        }
         updateCurrentPlayer();
+    }
+
+
+    private boolean isGameOver() {
+        int numberOfRowsFilled = 0;
+        for (GameRow row : rows) {
+            if (row.isFilled()) {
+                numberOfRowsFilled++;
+                if (row.hasWinner()) {
+                    return true;
+                }
+            }
+        }
+        if (numberOfRowsFilled == rows.size()) {
+            return true;
+        }
+        return false;
     }
 
     private void updateCurrentPlayer() {
@@ -46,5 +73,14 @@ public class GameBoard {
         else {
             currentPlayer = GameSymbol.X;
         }
+    }
+
+    private boolean isGameDraw() {
+        for (GameRow row : rows) {
+            if (row.hasWinner()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

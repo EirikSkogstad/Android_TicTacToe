@@ -71,7 +71,7 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
     }
 
     // Creds for guide: https://www.raywenderlich.com/126528/android-recyclerview-tutorial
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textViewPlayerName;
         private TextView textViewPlayerScore;
 

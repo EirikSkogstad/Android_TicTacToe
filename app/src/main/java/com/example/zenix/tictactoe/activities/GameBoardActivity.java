@@ -64,4 +64,8 @@ public class GameBoardActivity extends AppCompatActivity {
         intent.putExtra(CURRENT_PLAYER, playerTwoName);
         startActivity(intent);
     }
+
+    private void resetRecyclerViewGameBoard() {
+
+    }
 }

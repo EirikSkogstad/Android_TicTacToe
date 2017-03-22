@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.zenix.tictactoe.Player;
 import com.example.zenix.tictactoe.R;
 
 public class GameBoardActivity extends AppCompatActivity {
@@ -65,7 +66,4 @@ public class GameBoardActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void resetRecyclerViewGameBoard() {
-
-    }
 }

@@ -3,13 +3,15 @@ package com.example.zenix.tictactoe;
 /**
  * Data class for holding playerName and playerScore
  */
-public class PlayerData {
+public class Player {
     private String playerName;
     private int playerScore;
+    private GameSymbol gameSymbol;
 
-    public PlayerData(String playerName, int playerScore) {
+    public Player(String playerName, int playerScore, GameSymbol gameSymbol) {
         this.playerName = playerName;
         this.playerScore = playerScore;
+        this.gameSymbol = gameSymbol;
     }
 
     public String getPlayerName() {
@@ -30,5 +32,13 @@ public class PlayerData {
 
     public void setPlayerScore(int playerScore) {
         this.playerScore = playerScore;
+    }
+
+    public GameSymbol getGameSymbol() {
+        return gameSymbol;
+    }
+
+    public void setGameSymbol(GameSymbol gameSymbol) {
+        this.gameSymbol = gameSymbol;
     }
 }

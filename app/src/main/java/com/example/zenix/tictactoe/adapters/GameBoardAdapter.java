@@ -12,12 +12,10 @@ import com.example.zenix.tictactoe.R;
 import java.util.ArrayList;
 
 public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Adapter<GameBoardAdapter.ViewHolder> {
-    private ArrayList<GameSymbol> gameSymbols;
     private GameBoard gameBoard;
 
-    public GameBoardAdapter(ArrayList<GameSymbol> gameSymbols, GameBoard gameBoard) {
+    public GameBoardAdapter(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
-        this.gameSymbols = gameSymbols;
     }
 
     @Override
@@ -32,7 +30,7 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
 
     @Override
     public int getItemCount() {
-        return gameSymbols.size();
+        return gameBoard.getSize();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -44,12 +42,14 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
             this.gameButton = (Button) view.findViewById(R.id.button_gameButton);
         }
 
-        public void bindContent(int gameButtonPosition, GameBoard gameBoard) {
+        void bindContent(final int gameButtonPosition, final GameBoard gameBoard) {
             this.gameButtonPosition = gameButtonPosition;
+
             gameButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    gameButton.setText(gameBoard.getCurrentPlayer().toString());
+                    gameBoard.updateBoard(gameButtonPosition);
                 }
             });
         }

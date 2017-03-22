@@ -1,15 +1,18 @@
 package com.example.zenix.tictactoe;
 
+import com.example.zenix.tictactoe.activities.GameBoardActivity;
+
 import java.util.ArrayList;
 
 public class GameBoard {
 
+    private GameBoardActivity gameBoardActivity;
     private GameSymbol currentPlayer;
     private ArrayList<GameSymbol> board;
     private ArrayList<GameRow> rows;
     private boolean gameDraw;
 
-    public GameBoard() {
+    public GameBoard(GameBoardActivity gameBoardActivity) {
         initBoard();
     }
 
@@ -37,7 +40,6 @@ public class GameBoard {
     public void updateBoard(int index) {
         board.set(index, currentPlayer);
 
-
         if (isGameOver()) {
             if (isGameDraw()) {
                 // Signal acitvity, no winner.
@@ -47,6 +49,7 @@ public class GameBoard {
             }
         }
         updateCurrentPlayer();
+        gameBoardActivity.refresh();
     }
 
 
@@ -82,5 +85,13 @@ public class GameBoard {
             }
         }
         return true;
+    }
+
+    public int getSize() {
+        return board.size();
+    }
+
+    public GameSymbol getCurrentPlayer() {
+        return currentPlayer;
     }
 }

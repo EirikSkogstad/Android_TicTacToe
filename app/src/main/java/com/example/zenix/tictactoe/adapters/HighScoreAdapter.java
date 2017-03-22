@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.zenix.tictactoe.PlayerData;
+import com.example.zenix.tictactoe.GameSymbol;
+import com.example.zenix.tictactoe.Player;
 import com.example.zenix.tictactoe.R;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.Map;
  */
 public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Adapter<HighScoreAdapter.ViewHolder> {
 
-    private List<PlayerData> scores;
+    private List<Player> scores;
     private LayoutInflater layoutInflater;
 
     public HighScoreAdapter(Map<String, Integer> scoresMap) {
@@ -29,18 +30,20 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
     }
 
     private void initScoresList(Map<String, Integer> scoresMap) {
-        List<PlayerData> scores = new ArrayList<>();
+
+        // Testdata
+        List<Player> scores = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : scoresMap.entrySet()) {
-            scores.add(new PlayerData(entry.getKey(), entry.getValue()));
+            scores.add(new Player(entry.getKey(), entry.getValue(), GameSymbol.O));
         }
         sortScores(scores);
         this.scores = scores;
     }
 
-    private void sortScores(List<PlayerData> scores) {
-        Collections.sort(scores, new Comparator<PlayerData>() {
+    private void sortScores(List<Player> scores) {
+        Collections.sort(scores, new Comparator<Player>() {
             @Override
-            public int compare(PlayerData o1, PlayerData o2) {
+            public int compare(Player o1, Player o2) {
                 if (o1.getPlayerScore() < o2.getPlayerScore()) {
                     return 1;
                 }
@@ -83,9 +86,9 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
             view.setOnClickListener(this);
         }
 
-        public void bindContent(PlayerData playerData) {
-            textViewPlayerName.setText(playerData.getPlayerName());
-            textViewPlayerScore.setText(playerData.getPlayerScoreAsString());
+        public void bindContent(Player player) {
+            textViewPlayerName.setText(player.getPlayerName());
+            textViewPlayerScore.setText(player.getPlayerScoreAsString());
         }
 
         @Override

@@ -23,7 +23,7 @@ public class GameBoard {
         board = new ArrayList<>();
         rows = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
-            board.add(i, GameSymbol.EMPTY);
+            board.add(i, new GameSymbol(GameSymbol.Symbol.EMPTY));
         }
 
         // Horizontal
@@ -42,7 +42,7 @@ public class GameBoard {
     }
 
     public void updateBoard(int index) {
-        board.set(index, currentPlayer);
+        board.get(index).setSymbol(currentPlayer.getSymbol());
 
         if (isGameOver()) {
             if (isGameDraw()) {

@@ -13,11 +13,6 @@ public class GameSymbol {
     public static final GameSymbol O = new GameSymbol(Symbol.O);
     public static final GameSymbol EMPTY = new GameSymbol(Symbol.EMPTY);
 
-    enum Symbol {
-        EMPTY,
-        X,
-        O
-    }
     private Symbol symbol;
 
     public GameSymbol(Symbol symbol) {
@@ -26,6 +21,10 @@ public class GameSymbol {
 
     public void setSymbol(Symbol symbol) {
         this.symbol = symbol;
+    }
+
+    public Symbol getSymbol() {
+        return symbol;
     }
 
     @Override
@@ -43,9 +42,20 @@ public class GameSymbol {
         return o != null && symbol == o;
     }
 
-
     @Override
     public int hashCode() {
         return symbol != null ? symbol.hashCode() : 0;
+    }
+
+
+    @Override
+    public String toString() {
+        return symbol.toString();
+    }
+
+    enum Symbol {
+        EMPTY,
+        X,
+        O
     }
 }

@@ -49,7 +49,7 @@ public class HighScoreActivity extends AppCompatActivity {
 
     private void initComponents() {
         buttonBack = (Button) findViewById(R.id.button_back);
-        recyclerView_HighScores = (RecyclerView) findViewById(R.id.recyclerView_highScores);
+        recyclerView_HighScores = (RecyclerView) findViewById(R.id.recyclerView_highScore);
         recyclerView_HighScores.setLayoutManager(new LinearLayoutManager(this));
     }
 

@@ -34,7 +34,7 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
         // Testdata
         List<Player> scores = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : scoresMap.entrySet()) {
-            scores.add(new Player(entry.getKey(), entry.getValue(), GameSymbol.O));
+            scores.add(new Player(entry.getKey(), entry.getValue(), null));
         }
         sortScores(scores);
         this.scores = scores;

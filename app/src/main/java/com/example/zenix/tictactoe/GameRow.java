@@ -25,7 +25,7 @@ class GameRow {
 
     public boolean isFilled() {
         for (GameSymbol symbol : symbols) {
-            if (symbol == GameSymbol.EMPTY) {
+            if (symbol.equals(GameSymbol.Symbol.EMPTY)) {
                 return false;
             }
         }

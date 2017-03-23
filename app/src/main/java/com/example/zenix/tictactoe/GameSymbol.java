@@ -9,6 +9,10 @@ package com.example.zenix.tictactoe;
 
 public class GameSymbol {
 
+    public static final GameSymbol X = new GameSymbol(Symbol.X);
+    public static final GameSymbol O = new GameSymbol(Symbol.O);
+    public static final GameSymbol EMPTY = new GameSymbol(Symbol.EMPTY);
+
     enum Symbol {
         EMPTY,
         X,
@@ -18,10 +22,6 @@ public class GameSymbol {
 
     public GameSymbol(Symbol symbol) {
         this.symbol = symbol;
-    }
-
-    public Symbol getSymbol() {
-        return symbol;
     }
 
     public void setSymbol(Symbol symbol) {

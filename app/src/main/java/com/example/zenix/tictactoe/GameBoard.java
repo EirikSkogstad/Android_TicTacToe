@@ -1,5 +1,7 @@
 package com.example.zenix.tictactoe;
 
+import android.widget.Toast;
+
 import com.example.zenix.tictactoe.activities.GameBoardActivity;
 
 import java.util.ArrayList;
@@ -17,9 +19,11 @@ public class GameBoard {
     }
 
     private void initBoard() {
+        currentPlayer = GameSymbol.O;
         board = new ArrayList<>();
-        for(int i = 0; i < 9; i++) {
-            board.add(GameSymbol.EMPTY);
+        rows = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            board.add(i, GameSymbol.EMPTY);
         }
 
         // Horizontal
@@ -43,13 +47,15 @@ public class GameBoard {
         if (isGameOver()) {
             if (isGameDraw()) {
                 // Signal acitvity, no winner.
-            }
-            else {
+                Toast.makeText(gameBoardActivity, "Draw", Toast.LENGTH_SHORT).show();
+            } else {
                 // Signal activity, currenPlayer == winner.
+                Toast.makeText(gameBoardActivity, "We have a winner!", Toast.LENGTH_SHORT).show();
+
             }
         }
         updateCurrentPlayer();
-        gameBoardActivity.refresh();
+        //gameBoardActivity.refresh();
     }
 
 
@@ -72,8 +78,7 @@ public class GameBoard {
     private void updateCurrentPlayer() {
         if (currentPlayer == GameSymbol.X) {
             currentPlayer = GameSymbol.O;
-        }
-        else {
+        } else {
             currentPlayer = GameSymbol.X;
         }
     }

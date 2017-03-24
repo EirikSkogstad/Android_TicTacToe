@@ -11,8 +11,8 @@ public class HighScoreHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "highscores.db";
 
     private static final String CREATE_TABLE_SQL = "CREATE TABLE" + HighScoreDbSchema.HighScoreTable.NAME  + "(" +
-            HighScoreDbSchema.Columns.ID + "integer primary key autoincrement," +
-            HighScoreDbSchema.Columns.NAME + "text not null," +
+            "_id integer primary key autoincrement," +
+            HighScoreDbSchema.Columns.NAME + "text not null unique," +
             HighScoreDbSchema.Columns.SCORE + "text not null" +
             ");";
 

@@ -8,10 +8,9 @@ public class Player {
     private int playerScore;
     private GameSymbol gameSymbol;
 
-    public Player(String playerName, int playerScore, GameSymbol gameSymbol) {
+    public Player(String playerName, int playerScore) {
         this.playerName = playerName;
         this.playerScore = playerScore;
-        this.gameSymbol = gameSymbol;
     }
 
     public String getPlayerName() {

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GameBoard {
 
     private GameBoardActivity gameBoardActivity;
-    private GameSymbol currentPlayer;
+    private GameSymbol currentSymbol;
     private ArrayList<GameSymbol> board;
     private ArrayList<GameRow> rows;
     private boolean gameDraw;
@@ -19,7 +19,7 @@ public class GameBoard {
     }
 
     private void initBoard() {
-        currentPlayer = GameSymbol.O;
+        currentSymbol = GameSymbol.O;
         board = new ArrayList<>();
         rows = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
@@ -42,16 +42,17 @@ public class GameBoard {
     }
 
     public void updateBoard(int index) {
-        board.get(index).setSymbol(currentPlayer.getSymbol());
+        board.get(index).setSymbol(currentSymbol.getSymbol());
 
         if (isGameOver()) {
             if (isGameDraw()) {
                 // Signal acitvity, no winner.
-                Toast.makeText(gameBoardActivity, "Draw", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(gameBoardActivity, "Draw", Toast.LENGTH_SHORT).show();
+                System.out.println("Draw");
             } else {
                 // Signal activity, currenPlayer == winner.
-                Toast.makeText(gameBoardActivity, "We have a winner!", Toast.LENGTH_SHORT).show();
-
+                //Toast.makeText(gameBoardActivity, "We have a winner!", Toast.LENGTH_SHORT).show();
+                System.out.println("Winner");
             }
         }
         updateCurrentPlayer();
@@ -76,10 +77,10 @@ public class GameBoard {
     }
 
     private void updateCurrentPlayer() {
-        if (currentPlayer == GameSymbol.X) {
-            currentPlayer = GameSymbol.O;
+        if (currentSymbol == GameSymbol.X) {
+            currentSymbol = GameSymbol.O;
         } else {
-            currentPlayer = GameSymbol.X;
+            currentSymbol = GameSymbol.X;
         }
     }
 
@@ -96,7 +97,7 @@ public class GameBoard {
         return board.size();
     }
 
-    public GameSymbol getCurrentPlayer() {
-        return currentPlayer;
+    public GameSymbol getCurrentSymbol() {
+        return currentSymbol;
     }
 }

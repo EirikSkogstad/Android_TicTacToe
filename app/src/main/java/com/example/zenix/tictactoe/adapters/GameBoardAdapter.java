@@ -7,10 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.zenix.tictactoe.GameBoard;
-import com.example.zenix.tictactoe.GameSymbol;
 import com.example.zenix.tictactoe.R;
-
-import java.util.ArrayList;
 
 public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Adapter<GameBoardAdapter.ViewHolder> {
     private GameBoard gameBoard;
@@ -23,7 +20,7 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.layout_game_board, parent, false);
+                .inflate(R.layout.layout_game_board_button, parent, false);
         return new ViewHolder(v);
     }
 
@@ -40,6 +37,7 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
     static class ViewHolder extends RecyclerView.ViewHolder {
         private int gameButtonPosition;
         private Button gameButton;
+        private boolean hasGameButtonBeenPressed = false;
 
         public ViewHolder(View view) {
             super(view);
@@ -52,8 +50,11 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
             gameButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    gameButton.setText(gameBoard.getCurrentPlayer().toString());
-                    gameBoard.updateBoard(gameButtonPosition);
+                    if (!hasGameButtonBeenPressed) {
+                        gameButton.setText(gameBoard.getCurrentSymbol().toString());
+                        gameBoard.updateBoard(gameButtonPosition);
+                        hasGameButtonBeenPressed = true;
+                    }
                 }
             });
         }

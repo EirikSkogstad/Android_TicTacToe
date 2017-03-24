@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class InputValidator {
     private InputValidator() {
-        // Shouldn't be initialized, since all methods are final.
+        // Shouldn't be initialized, since all methods are static.
     }
 
     public static boolean isEditTextEmpty(EditText editText) {

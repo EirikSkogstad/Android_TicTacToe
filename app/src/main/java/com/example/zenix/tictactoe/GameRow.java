@@ -32,6 +32,16 @@ class GameRow {
         return true;
     }
 
+    public GameSymbol getWinner() {
+        GameSymbol gameSymbol = symbols.get(0);
+        for (GameSymbol symbol : symbols) {
+            if (!gameSymbol.equals(symbol)) {
+                return GameSymbol.EMPTY;
+            }
+        }
+        return gameSymbol;
+    }
+
     public boolean hasWinner() {
         return isWinner(GameSymbol.O) || isWinner(GameSymbol.X);
     }

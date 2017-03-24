@@ -9,14 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.zenix.tictactoe.Player;
 import com.example.zenix.tictactoe.adapters.HighScoreAdapter;
 import com.example.zenix.tictactoe.R;
-import com.example.zenix.tictactoe.datastorage.FileHandler;
+import com.example.zenix.tictactoe.datastorage.HighScoreDAO;
 import com.example.zenix.tictactoe.datastorage.IOInterface;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HighScoreActivity extends AppCompatActivity {
@@ -24,7 +27,7 @@ public class HighScoreActivity extends AppCompatActivity {
     private RecyclerView recyclerView_HighScores;
 
     private String currentPlayer;
-    private Map<String, Integer> scores;
+    private List<Player> scores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,21 +69,20 @@ public class HighScoreActivity extends AppCompatActivity {
         });
     }
 
+
+    private void addTestData(HighScoreDAO highScoreDAO) {
+        List<Player> data = new ArrayList<>();
+        data.add(new Player("Bob", 1));
+        data.add(new Player("Cesare", 400));
+        data.add(new Player("Della Rovere", 3));
+
+        highScoreDAO.saveHighScores(data);
+    }
+
     private void loadHighScores() {
-        IOInterface ioInterface = new FileHandler(this);
-        scores = new HashMap<>();
-        Map<String, Integer> testScores = new HashMap<>();
-        testScores.put("Bob", 200);
-        testScores.put("Bobby Carl the Fifth of his name", 13);
-        testScores.put("Sam", 7);
-        try {
-            ioInterface.saveHighScores(testScores);
-            scores = ioInterface.readHighScores();
-        } catch (FileNotFoundException e) {
-            Toast.makeText(this, "Problems reading HighScores. Please try entering this screen again.", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Toast.makeText(this, "Problems saving highscore Test data", Toast.LENGTH_SHORT).show();
-        }
+        HighScoreDAO highScoreDAO = new HighScoreDAO(this);
+        addTestData(highScoreDAO);
+        scores = highScoreDAO.readHighScores();
     }
 
 }

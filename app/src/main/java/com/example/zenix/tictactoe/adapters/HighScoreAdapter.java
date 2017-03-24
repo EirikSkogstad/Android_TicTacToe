@@ -22,32 +22,23 @@ import java.util.Map;
  */
 public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Adapter<HighScoreAdapter.ViewHolder> {
 
-    private List<Player> scores;
+    private List<Player> highScores;
     private LayoutInflater layoutInflater;
 
-    public HighScoreAdapter(Map<String, Integer> scoresMap) {
-        initScoresList(scoresMap);
+    public HighScoreAdapter(List<Player> inputScores) {
+        sortScores(inputScores);
+        this.highScores = inputScores;
     }
 
-    private void initScoresList(Map<String, Integer> scoresMap) {
 
-        // Testdata
-        List<Player> scores = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : scoresMap.entrySet()) {
-            scores.add(new Player(entry.getKey(), entry.getValue(), null));
-        }
-        sortScores(scores);
-        this.scores = scores;
-    }
-
-    private void sortScores(List<Player> scores) {
-        Collections.sort(scores, new Comparator<Player>() {
+    private void sortScores(List<Player> inputScores) {
+        Collections.sort(inputScores, new Comparator<Player>() {
             @Override
-            public int compare(Player o1, Player o2) {
-                if (o1.getPlayerScore() < o2.getPlayerScore()) {
+            public int compare(Player player1, Player player2) {
+                if (player1.getPlayerScore() < player2.getPlayerScore()) {
                     return 1;
                 }
-                if (o1.getPlayerScore() == o2.getPlayerScore()) {
+                if (player1.getPlayerScore() == player2.getPlayerScore()) {
                     return 0;
                 }
                 return -1;
@@ -65,12 +56,12 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bindContent(scores.get(position));
+        holder.bindContent(highScores.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return scores.size();
+        return highScores.size();
     }
 
     // Creds for guide: https://www.raywenderlich.com/126528/android-recyclerview-tutorial

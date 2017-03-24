@@ -1,7 +1,10 @@
 package com.example.zenix.tictactoe.datastorage;
 
+import com.example.zenix.tictactoe.Player;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,7 +13,7 @@ import java.util.Map;
 
 public interface IOInterface {
 
-    void saveHighScores(Map<String, Integer> highScores) throws IOException;
+    void saveHighScores(List<Player> players) throws IOException;
 
-    Map<String, Integer> readHighScores() throws FileNotFoundException;
+    List<Player> readHighScores() throws FileNotFoundException;
 }

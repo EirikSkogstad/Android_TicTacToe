@@ -7,8 +7,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.zenix.tictactoe.GameBoard;
+import com.example.zenix.tictactoe.GameSymbol;
 import com.example.zenix.tictactoe.Player;
 import com.example.zenix.tictactoe.R;
 import com.example.zenix.tictactoe.adapters.GameBoardAdapter;
@@ -71,4 +73,11 @@ public class GameBoardActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void signalWinner(GameSymbol winningSymbol) {
+        Toast.makeText(this, winningSymbol.toString() + " has won!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void signalDraw() {
+        Toast.makeText(this, "No winner =/", Toast.LENGTH_SHORT).show();
+    }
 }

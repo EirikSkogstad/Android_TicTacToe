@@ -47,9 +47,9 @@ class GameRow {
     }
 
     private boolean isWinner(GameSymbol gameSymbol) {
-        return symbols.get(0) == gameSymbol
-                && symbols.get(1) == gameSymbol
-                && symbols.get(2) == gameSymbol;
+        return symbols.get(0).equals(gameSymbol)
+                && symbols.get(1).equals(gameSymbol)
+                && symbols.get(2).equals(gameSymbol);
     }
 
 }

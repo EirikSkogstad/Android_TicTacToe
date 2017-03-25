@@ -15,6 +15,7 @@ public class GameBoard {
     private boolean gameDraw;
 
     public GameBoard(GameBoardActivity gameBoardActivity) {
+        this.gameBoardActivity = gameBoardActivity;
         initBoard();
     }
 
@@ -47,12 +48,10 @@ public class GameBoard {
         if (isGameOver()) {
             if (isGameDraw()) {
                 // Signal acitvity, no winner.
-                //Toast.makeText(gameBoardActivity, "Draw", Toast.LENGTH_SHORT).show();
-                System.out.println("Draw");
+                gameBoardActivity.signalDraw();
             } else {
                 // Signal activity, currenPlayer == winner.
-                //Toast.makeText(gameBoardActivity, "We have a winner!", Toast.LENGTH_SHORT).show();
-                System.out.println("Winner");
+                gameBoardActivity.signalWinner(currentSymbol);
             }
         }
         updateCurrentPlayer();
@@ -60,6 +59,12 @@ public class GameBoard {
     }
 
 
+    /**
+     * Checks the board to see if game is over, based on two conditions:
+     * 1. If a row has only X or O.
+     * 2. All rows are filled.
+     * @return is game over.
+     */
     private boolean isGameOver() {
         int numberOfRowsFilled = 0;
         for (GameRow row : rows) {

@@ -17,7 +17,7 @@ import java.util.Map;
 
 import static com.example.zenix.tictactoe.datastorage.HighScoreDbSchema.*;
 
-public class HighScoreDAO {
+public class HighScoreDAO implements IOInterface {
 
     private Context applicationContext;
     private SQLiteDatabase database;
@@ -27,23 +27,15 @@ public class HighScoreDAO {
         this.database = new HighScoreHelper(context).getWritableDatabase();
     }
 
-    public void saveHighScore(Player player) {
-        ContentValues contentValues = getContentValues(player);
-
-        database.insert(HighScoreTable.NAME, null, contentValues);
-    }
-
-    public void updateHighScore(Player player) {
-
-    }
-
-    public void saveHighScores(List<Player> players) {
+    @Override
+    public void addToDatabase(List<Player> players) {
         for (Player player : players) {
             saveHighScore(player);
         }
     }
 
-    public List<Player> readHighScores() {
+    @Override
+    public List<Player> readFromDatabase() {
         List<Player> scores = new ArrayList<>();
         Cursor cursor = getHighScoreCursor();
         cursor.moveToFirst();
@@ -55,6 +47,24 @@ public class HighScoreDAO {
 
         cursor.close();
         return scores;
+    }
+
+    private void saveHighScore(Player player) {
+        ContentValues contentValues = getContentValues(player);
+
+        database.insert(HighScoreTable.NAME, null, contentValues);
+    }
+
+    private void updateHighScore(Player player) {
+        String name = player.getPlayerName();
+        ContentValues contentValues = getContentValues(player);
+
+        database.update(
+                HighScoreTable.NAME,
+                contentValues,
+                Columns.NAME + " = ?",
+                new String[] {name}
+        );
     }
 
 

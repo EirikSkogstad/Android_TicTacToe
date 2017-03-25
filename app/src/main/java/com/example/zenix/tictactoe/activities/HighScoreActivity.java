@@ -7,20 +7,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.zenix.tictactoe.Player;
 import com.example.zenix.tictactoe.adapters.HighScoreAdapter;
 import com.example.zenix.tictactoe.R;
 import com.example.zenix.tictactoe.datastorage.HighScoreDAO;
-import com.example.zenix.tictactoe.datastorage.IOInterface;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class HighScoreActivity extends AppCompatActivity {
     private Button buttonBack;
@@ -76,13 +70,13 @@ public class HighScoreActivity extends AppCompatActivity {
         data.add(new Player("Cesare", 400));
         data.add(new Player("Della Rovere", 3));
 
-        highScoreDAO.saveHighScores(data);
+        highScoreDAO.addToDatabase(data);
     }
 
     private void loadHighScores() {
         HighScoreDAO highScoreDAO = new HighScoreDAO(this);
         addTestData(highScoreDAO);
-        scores = highScoreDAO.readHighScores();
+        scores = highScoreDAO.readFromDatabase();
     }
 
 }

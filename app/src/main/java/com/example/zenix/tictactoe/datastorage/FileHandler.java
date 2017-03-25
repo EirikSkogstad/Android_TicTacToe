@@ -33,7 +33,7 @@
 //     * @return Map with playerName and playerScore.
 //     * @throws FileNotFoundException if file cannot be found.
 //     */
-//    public Map<String, Integer> readHighScores() throws FileNotFoundException {
+//    public Map<String, Integer> readFromDatabase() throws FileNotFoundException {
 //        Map<String, Integer> highScores = new HashMap<>();
 //        if (highScoreFile.exists()) {
 //            Scanner scanner = new Scanner(highScoreFile);
@@ -58,7 +58,7 @@
 //     * @param highScores Map containting playername as key, and value as value.
 //     * @throws IOException If problems occur during writing of files.
 //     */
-//    public void saveHighScores(Map<String, Integer> highScores) throws IOException {
+//    public void addToDatabase(Map<String, Integer> highScores) throws IOException {
 //        if (!highScoreFile.exists()) {
 //            highScoreFile.createNewFile();
 //        }

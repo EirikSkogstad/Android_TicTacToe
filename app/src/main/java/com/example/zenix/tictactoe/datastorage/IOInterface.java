@@ -13,7 +13,7 @@ import java.util.Map;
 
 public interface IOInterface {
 
-    void saveHighScores(List<Player> players) throws IOException;
+    void addToDatabase(List<Player> players);
 
-    List<Player> readHighScores() throws FileNotFoundException;
+    List<Player> readFromDatabase();
 }

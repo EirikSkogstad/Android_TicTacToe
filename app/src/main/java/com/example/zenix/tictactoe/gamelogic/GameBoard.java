@@ -47,9 +47,11 @@ public class GameBoard {
             if (isGameDraw()) {
                 // Signal acitvity, no winner.
                 gameBoardActivity.signalDraw();
+                return;
             } else {
                 // Signal activity, currenPlayer == winner.
                 gameBoardActivity.signalWinner(currentSymbol);
+                return;
             }
         }
         updateCurrentSymbol();

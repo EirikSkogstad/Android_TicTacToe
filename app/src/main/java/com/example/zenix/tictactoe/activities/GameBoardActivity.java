@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.zenix.tictactoe.gamelogic.GameBoard;
@@ -27,10 +28,11 @@ public class GameBoardActivity extends AppCompatActivity {
     private Button buttonHighScore;
     private Button buttonNewGame;
     private RecyclerView recyclerView_gameBoard;
+    private TextView textView_currentPlayer;
 
     private Player playerOne;
     private Player playerTwo;
-    private Player winningPlayer;
+    private Player currentPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class GameBoardActivity extends AppCompatActivity {
         handleIntent();
         initComponents();
         initListeners();
+
+        restartGame();
     }
 
     private void handleIntent() {
@@ -57,11 +61,10 @@ public class GameBoardActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        winningPlayer = null;
-
         buttonRestart = (Button) findViewById(R.id.button_restart);
         buttonHighScore = (Button) findViewById(R.id.button_high_score);
         buttonNewGame = (Button) findViewById(R.id.button_new_game);
+        textView_currentPlayer = (TextView) findViewById(R.id.textView_currentPlayer);
         recyclerView_gameBoard = (RecyclerView) findViewById(R.id.recyclerView_gameBoard);
         recyclerView_gameBoard.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView_gameBoard.setAdapter(new GameBoardAdapter(new GameBoard(this)));
@@ -91,9 +94,9 @@ public class GameBoardActivity extends AppCompatActivity {
     private void startHighScoreActivity() {
         Intent intent = new Intent(this, HighScoreActivity.class);
 
-        if (winningPlayer != null) {
-            intent.putExtra(CURRENT_PLAYER_NAME, winningPlayer.getPlayerName());
-            intent.putExtra(CURRENT_PLAYER_SCORE, winningPlayer.getPlayerScore());
+        if (currentPlayer != null) {
+            intent.putExtra(CURRENT_PLAYER_NAME, currentPlayer.getPlayerName());
+            intent.putExtra(CURRENT_PLAYER_SCORE, currentPlayer.getPlayerScore());
         }
 
         startActivity(intent);
@@ -105,16 +108,30 @@ public class GameBoardActivity extends AppCompatActivity {
     }
 
     private void restartGame() {
+        currentPlayer = playerOne;
+        updateCurrentPlayerText();
         recyclerView_gameBoard.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView_gameBoard.setAdapter(new GameBoardAdapter(new GameBoard(this)));
         recyclerView_gameBoard.refreshDrawableState();
+    }
+
+    public void toggleCurrentPlayer() {
+        if (currentPlayer == playerOne) {
+            currentPlayer = playerTwo;
+        } else {
+            currentPlayer = playerOne;
+        }
+        updateCurrentPlayerText();
+    }
+
+    private void updateCurrentPlayerText() {
+        textView_currentPlayer.setText("Current Player: " + this.currentPlayer.getGameSymbol() + ": " + this.currentPlayer.getPlayerName());
     }
 
     public void signalWinner(GameSymbol winningSymbol) {
         Toast.makeText(this, winningSymbol.toString() + " has won!", Toast.LENGTH_SHORT).show();
         restartGame();
     }
-
 
     public void signalDraw() {
         Toast.makeText(this, "No winner =/", Toast.LENGTH_SHORT).show();

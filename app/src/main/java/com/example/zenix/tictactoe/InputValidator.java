@@ -28,4 +28,20 @@ public class InputValidator {
     public static String getEditTextString(EditText editText) {
         return editText.getText().toString();
     }
+
+
+    /**
+     * Checks to see if any of objects input are null, if they are, return false.
+     *
+     * @param objects objects to check for null
+     * @return are any of parameters null?
+     */
+    public static boolean isNotNull(Object... objects) {
+        for (Object object : objects) {
+            if (object == null) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

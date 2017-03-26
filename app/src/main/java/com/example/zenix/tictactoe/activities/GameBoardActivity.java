@@ -1,8 +1,8 @@
 package com.example.zenix.tictactoe.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,13 +10,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.zenix.tictactoe.gamelogic.GameBoard;
-import com.example.zenix.tictactoe.gamelogic.GameSymbol;
 import com.example.zenix.tictactoe.Player;
 import com.example.zenix.tictactoe.R;
 import com.example.zenix.tictactoe.adapters.GameBoardAdapter;
 import com.example.zenix.tictactoe.datastorage.HighScoreDAO;
 import com.example.zenix.tictactoe.datastorage.IOInterface;
+import com.example.zenix.tictactoe.gamelogic.GameBoard;
+import com.example.zenix.tictactoe.gamelogic.GameSymbol;
 
 public class GameBoardActivity extends AppCompatActivity {
 
@@ -129,7 +129,8 @@ public class GameBoardActivity extends AppCompatActivity {
     }
 
     public void signalWinner(GameSymbol winningSymbol) {
-        Toast.makeText(this, winningSymbol.toString() + " has won!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, currentPlayer.getPlayerName() + " has won!", Toast.LENGTH_SHORT).show();
+        currentPlayer.setPlayerScore(currentPlayer.getPlayerScore() + 1);
         restartGame();
     }
 

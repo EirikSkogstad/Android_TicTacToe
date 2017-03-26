@@ -20,7 +20,7 @@ public class HighScoreActivity extends AppCompatActivity {
     private Button buttonBack;
     private RecyclerView recyclerView_HighScores;
 
-    private String currentPlayer;
+    private Player currentPlayer;
     private List<Player> scores;
 
     @Override
@@ -41,7 +41,10 @@ public class HighScoreActivity extends AppCompatActivity {
 
     private void handleIntent() {
         Intent intent = getIntent();
-        currentPlayer = intent.getStringExtra(GameBoardActivity.CURRENT_PLAYER);
+        currentPlayer = new Player(
+                intent.getStringExtra(GameBoardActivity.CURRENT_PLAYER_NAME),
+                intent.getIntExtra(GameBoardActivity.CURRENT_PLAYER_SCORE,0)
+        );
     }
 
     private void initComponents() {

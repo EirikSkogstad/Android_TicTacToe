@@ -8,12 +8,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Zenix on 17.03.2017.
+ * Simple interface for saving and reading highscores.
  */
-
 public interface IOInterface {
 
     void addToDatabase(List<Player> players);
+
+    void addToDatabase(Player player);
 
     List<Player> readFromDatabase();
 }

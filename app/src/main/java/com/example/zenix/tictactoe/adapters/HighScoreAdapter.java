@@ -7,15 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.zenix.tictactoe.GameSymbol;
 import com.example.zenix.tictactoe.Player;
 import com.example.zenix.tictactoe.R;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Used in HighScoreActivity's RecyclerView

@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.zenix.tictactoe.GameBoard;
+import com.example.zenix.tictactoe.gamelogic.GameBoard;
 import com.example.zenix.tictactoe.R;
 
 public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Adapter<GameBoardAdapter.ViewHolder> {

@@ -28,6 +28,11 @@ public class HighScoreDAO implements IOInterface {
     }
 
     @Override
+    public void addToDatabase(Player player) {
+        saveHighScore(player);
+    }
+
+    @Override
     public void addToDatabase(List<Player> players) {
         for (Player player : players) {
             saveHighScore(player);

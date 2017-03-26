@@ -13,8 +13,8 @@ import com.example.zenix.tictactoe.R;
 
 public class InputScreenActivity extends AppCompatActivity {
 
-    public static final String PLAYER_ONE = "playerOne";
-    public static final String PLAYER_TWO = "playerTwo";
+    public static final String PLAYER_ONE_NAME = "playerOneName";
+    public static final String PLAYER_TWO_NAME = "playerTwoName";
 
     private EditText editTextPlayerOne;
     private EditText editTextPlayerTwo;
@@ -66,8 +66,8 @@ public class InputScreenActivity extends AppCompatActivity {
 
     private void startGameBoardActivity() {
         Intent intent = new Intent(this, GameBoardActivity.class);
-        intent.putExtra(PLAYER_ONE, editTextPlayerOne.getText().toString());
-        intent.putExtra(PLAYER_TWO, editTextPlayerTwo.getText().toString());
+        intent.putExtra(PLAYER_ONE_NAME, editTextPlayerOne.getText().toString());
+        intent.putExtra(PLAYER_TWO_NAME, editTextPlayerTwo.getText().toString());
 
         startActivity(intent);
     }

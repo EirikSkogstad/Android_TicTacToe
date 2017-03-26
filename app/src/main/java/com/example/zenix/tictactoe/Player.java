@@ -1,5 +1,7 @@
 package com.example.zenix.tictactoe;
 
+import com.example.zenix.tictactoe.gamelogic.GameSymbol;
+
 /**
  * Data class for holding playerName and playerScore
  */
@@ -11,6 +13,12 @@ public class Player {
     public Player(String playerName, int playerScore) {
         this.playerName = playerName;
         this.playerScore = playerScore;
+    }
+
+    public Player(String playerName, int playerScore, GameSymbol gameSymbol) {
+        this.playerName = playerName;
+        this.playerScore = playerScore;
+        this.gameSymbol = gameSymbol;
     }
 
     public String getPlayerName() {

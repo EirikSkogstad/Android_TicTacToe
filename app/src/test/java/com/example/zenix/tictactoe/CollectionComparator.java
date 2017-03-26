@@ -23,16 +23,6 @@ public class CollectionComparator
             return false;
         }
 
-
-        // TODO Java 8 support
-        //add support for Java 8 to project if it doesn't hurt backward comparability
-
-
-        //Set<T> set = map2.entrySet()
-        //        .stream()
-        //        .map(Map.Entry::getValue)
-        //        .collect(Collectors.toSet());
-
         Set<T> set = new HashSet<>();
 
         for (Map.Entry<K, T> entry : map2.entrySet()) {

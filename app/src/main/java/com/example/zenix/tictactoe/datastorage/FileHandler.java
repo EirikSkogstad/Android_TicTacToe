@@ -15,7 +15,6 @@
 // * Helper class for saving and reading data from files.
 // */
 //public class FileHandler implements IOInterface {
-//    //FIXME needs to take into account new scores from existing user. Update the existing data.
 //
 //    private static final String HIGHSCORE_FILE_NAME = "/highscore.txt";
 //    private static final String LINE_SEPARATOR = System.getProperty("line.separator");

@@ -1,4 +1,4 @@
-package com.example.zenix.tictactoe;
+package com.example.zenix.tictactoe.gamelogic;
 
 import java.util.ArrayList;
 

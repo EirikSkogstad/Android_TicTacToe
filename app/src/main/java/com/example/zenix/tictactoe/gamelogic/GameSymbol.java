@@ -1,4 +1,4 @@
-package com.example.zenix.tictactoe;
+package com.example.zenix.tictactoe.gamelogic;
 
 /**
  * Wrapper class for holding different symbols. X, O and EMPTY.

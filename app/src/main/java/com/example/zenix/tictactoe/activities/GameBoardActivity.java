@@ -27,8 +27,10 @@ public class GameBoardActivity extends AppCompatActivity {
     private Button buttonRestart;
     private Button buttonHighScore;
     private Button buttonNewGame;
-    private RecyclerView recyclerView_gameBoard;
-    private TextView textView_currentPlayer;
+    private RecyclerView recyclerViewGameBoard;
+    private TextView textViewCurrentPlayer;
+    private TextView textViewPlayerOne;
+    private TextView textViewPlayerTwo;
 
     private Player playerOne;
     private Player playerTwo;
@@ -66,10 +68,12 @@ public class GameBoardActivity extends AppCompatActivity {
         buttonRestart = (Button) findViewById(R.id.button_restart);
         buttonHighScore = (Button) findViewById(R.id.button_high_score);
         buttonNewGame = (Button) findViewById(R.id.button_new_game);
-        textView_currentPlayer = (TextView) findViewById(R.id.textView_currentPlayer);
-        recyclerView_gameBoard = (RecyclerView) findViewById(R.id.recyclerView_gameBoard);
-        recyclerView_gameBoard.setLayoutManager(new GridLayoutManager(this, 3));
-        recyclerView_gameBoard.setAdapter(new GameBoardAdapter(new GameBoard(this)));
+        textViewCurrentPlayer = (TextView) findViewById(R.id.textView_currentPlayer);
+        textViewPlayerOne = (TextView) findViewById(R.id.textView_playerOne);
+        textViewPlayerTwo = (TextView) findViewById(R.id.textView_playerTwo);
+        recyclerViewGameBoard = (RecyclerView) findViewById(R.id.recyclerView_gameBoard);
+        recyclerViewGameBoard.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerViewGameBoard.setAdapter(new GameBoardAdapter(new GameBoard(this)));
 
         this.ioInterface = new HighScoreDAO(this);
     }
@@ -109,13 +113,15 @@ public class GameBoardActivity extends AppCompatActivity {
     private void restartGame() {
         currentPlayer = playerOne;
         updateCurrentPlayerText();
-        recyclerView_gameBoard.setLayoutManager(new GridLayoutManager(this, 3));
-        recyclerView_gameBoard.setAdapter(new GameBoardAdapter(new GameBoard(this)));
-        recyclerView_gameBoard.refreshDrawableState();
+        recyclerViewGameBoard.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerViewGameBoard.setAdapter(new GameBoardAdapter(new GameBoard(this)));
+        recyclerViewGameBoard.refreshDrawableState();
     }
 
     private void updateCurrentPlayerText() {
-        textView_currentPlayer.setText("Current Player: " + this.currentPlayer.getGameSymbol() + ": " + this.currentPlayer.getPlayerName());
+        textViewCurrentPlayer.setText(this.currentPlayer.getPlayerName() + "'s Turn:");
+        textViewPlayerOne.setText(this.playerOne.getPlayerName() + ": " + this.playerOne.getPlayerScore());
+        textViewPlayerTwo.setText(this.playerTwo.getPlayerName() + ": " + this.playerTwo.getPlayerScore());
     }
 
     private void saveScores() {

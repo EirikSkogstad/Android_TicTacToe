@@ -1,5 +1,6 @@
 package com.example.zenix.tictactoe.adapters;
 
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,11 +37,13 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         private int gameButtonPosition;
+        private int darkerColor;
         private Button gameButton;
         private boolean hasGameButtonBeenPressed = false;
 
         public ViewHolder(View view) {
             super(view);
+
             this.gameButton = (Button) view.findViewById(R.id.button_gameButton);
         }
 
@@ -52,6 +55,12 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
                 public void onClick(View v) {
                     if (!hasGameButtonBeenPressed) {
                         gameButton.setText(gameBoard.getCurrentSymbol().toString());
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            gameButton.setBackgroundColor(v.getResources().getColor(R.color.colorLightBlueDarker, null));
+                        } else {
+                            gameButton.setBackgroundColor(v.getResources().getColor(R.color.colorLightBlueDarker));
+                        }
+
                         gameBoard.updateBoard(gameButtonPosition);
                         hasGameButtonBeenPressed = true;
                     }
@@ -59,7 +68,6 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
             });
         }
     }
-
 
 
 }

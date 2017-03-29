@@ -10,4 +10,6 @@
     <string name="input_screen_text">Please fill in both player\'s names.</string>
     <string name="player_one_text">Player one:</string>
     <string name="player_two_text">Player two:</string>
+    <string name="high_scores_heading_text">High Scores:</string>
+    <string name="go_back_text">Go Back</string>
 </resources>

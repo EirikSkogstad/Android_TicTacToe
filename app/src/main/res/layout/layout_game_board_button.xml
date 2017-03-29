@@ -4,8 +4,13 @@
     android:layout_height="110dp"
     android:orientation="vertical">
 
+
     <Button
         android:id="@+id/button_gameButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorLightBlue"
+        android:textSize="@dimen/game_button_font_size"
+        />
 </LinearLayout>

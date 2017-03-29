@@ -35,10 +35,7 @@ public class HighScoreActivity extends AppCompatActivity {
         initListeners();
 
         loadHighScores();
-
-        if (!scores.isEmpty()) {
-            initAdapter();
-        }
+        initAdapter();
     }
 
     private void handleIntent() {
@@ -73,20 +70,19 @@ public class HighScoreActivity extends AppCompatActivity {
         });
     }
 
-
-    private void addTestData(HighScoreDAO highScoreDAO) {
-        List<Player> data = new ArrayList<>();
-        data.add(new Player("Bob", 1));
-        data.add(new Player("Cesare", 400));
-        data.add(new Player("Della Rovere", 3));
-
-        highScoreDAO.addToDatabase(data);
-    }
+//    private void addTestData(HighScoreDAO highScoreDAO) {
+//        List<Player> data = new ArrayList<>();
+//        data.add(new Player("Cesare7", 50));
+//
+//        highScoreDAO.addToDatabase(data);
+//    }
 
     private void loadHighScores() {
         HighScoreDAO highScoreDAO = new HighScoreDAO(this);
-        addTestData(highScoreDAO);
         scores = highScoreDAO.readFromDatabase();
+        if (scores == null) {
+            scores = new ArrayList<>();
+        }
     }
 
 }

@@ -1,6 +1,5 @@
 package com.example.zenix.tictactoe.datastorage;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,13 +8,11 @@ import android.support.annotation.NonNull;
 
 import com.example.zenix.tictactoe.Player;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import static com.example.zenix.tictactoe.datastorage.HighScoreDbSchema.*;
+import static com.example.zenix.tictactoe.datastorage.HighScoreDbSchema.Columns;
+import static com.example.zenix.tictactoe.datastorage.HighScoreDbSchema.HighScoreTable;
 
 public class HighScoreDAO implements IOInterface {
 
@@ -23,8 +20,8 @@ public class HighScoreDAO implements IOInterface {
     private SQLiteDatabase database;
 
     public HighScoreDAO(Context context) {
-        applicationContext = context.getApplicationContext();
-        this.database = new HighScoreHelper(context).getWritableDatabase();
+        this.applicationContext = context.getApplicationContext();
+        this.database = new HighScoreHelper(applicationContext).getWritableDatabase();
     }
 
     @Override
@@ -48,6 +45,7 @@ public class HighScoreDAO implements IOInterface {
         while (!cursor.isAfterLast()) {
             Player newPlayer = getPlayerFromCursor(cursor);
             scores.add(newPlayer);
+            cursor.moveToNext();
         }
 
         cursor.close();

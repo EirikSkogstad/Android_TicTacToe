@@ -27,7 +27,6 @@ public class HighScoreAdapter extends android.support.v7.widget.RecyclerView.Ada
         this.highScores = inputScores;
     }
 
-
     private void sortScores(List<Player> inputScores) {
         Collections.sort(inputScores, new Comparator<Player>() {
             @Override

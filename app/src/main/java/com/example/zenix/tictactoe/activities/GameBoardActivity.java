@@ -33,6 +33,7 @@ public class GameBoardActivity extends AppCompatActivity {
     private Player playerOne;
     private Player playerTwo;
     private Player currentPlayer;
+    private IOInterface ioInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class GameBoardActivity extends AppCompatActivity {
         handleIntent();
         initComponents();
         initListeners();
+        loadPreviousScores();
 
         restartGame();
     }
@@ -68,6 +70,8 @@ public class GameBoardActivity extends AppCompatActivity {
         recyclerView_gameBoard = (RecyclerView) findViewById(R.id.recyclerView_gameBoard);
         recyclerView_gameBoard.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView_gameBoard.setAdapter(new GameBoardAdapter(new GameBoard(this)));
+
+        this.ioInterface = new HighScoreDAO(this);
     }
 
     private void initListeners() {
@@ -102,17 +106,25 @@ public class GameBoardActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void savePlayerScore(Player winningPlayer) {
-        IOInterface ioInterface = new HighScoreDAO(this);
-        ioInterface.addToDatabase(winningPlayer);
-    }
-
     private void restartGame() {
         currentPlayer = playerOne;
         updateCurrentPlayerText();
         recyclerView_gameBoard.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView_gameBoard.setAdapter(new GameBoardAdapter(new GameBoard(this)));
         recyclerView_gameBoard.refreshDrawableState();
+    }
+
+    private void updateCurrentPlayerText() {
+        textView_currentPlayer.setText("Current Player: " + this.currentPlayer.getGameSymbol() + ": " + this.currentPlayer.getPlayerName());
+    }
+
+    private void saveScores() {
+        ioInterface.addPLayer(currentPlayer);
+    }
+
+    private void loadPreviousScores() {
+        playerOne.setPlayerScore(ioInterface.readPlayerScore(playerOne));
+        playerTwo.setPlayerScore(ioInterface.readPlayerScore(playerTwo));
     }
 
     public void toggleCurrentPlayer() {
@@ -124,13 +136,10 @@ public class GameBoardActivity extends AppCompatActivity {
         updateCurrentPlayerText();
     }
 
-    private void updateCurrentPlayerText() {
-        textView_currentPlayer.setText("Current Player: " + this.currentPlayer.getGameSymbol() + ": " + this.currentPlayer.getPlayerName());
-    }
-
     public void signalWinner(GameSymbol winningSymbol) {
         Toast.makeText(this, currentPlayer.getPlayerName() + " has won!", Toast.LENGTH_SHORT).show();
         currentPlayer.setPlayerScore(currentPlayer.getPlayerScore() + 1);
+        saveScores();
         restartGame();
     }
 

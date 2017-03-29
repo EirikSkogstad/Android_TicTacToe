@@ -74,12 +74,12 @@ public class HighScoreActivity extends AppCompatActivity {
 //        List<Player> data = new ArrayList<>();
 //        data.add(new Player("Cesare7", 50));
 //
-//        highScoreDAO.addToDatabase(data);
+//        highScoreDAO.addPLayer(data);
 //    }
 
     private void loadHighScores() {
         HighScoreDAO highScoreDAO = new HighScoreDAO(this);
-        scores = highScoreDAO.readFromDatabase();
+        scores = highScoreDAO.readAllPlayers();
         if (scores == null) {
             scores = new ArrayList<>();
         }

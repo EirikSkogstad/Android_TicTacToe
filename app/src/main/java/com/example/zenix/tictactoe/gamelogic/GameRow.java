@@ -2,7 +2,7 @@ package com.example.zenix.tictactoe.gamelogic;
 
 import java.util.ArrayList;
 
-class GameRow {
+public class GameRow {
     private ArrayList<GameSymbol> symbols;
 
     public GameRow(GameSymbol... symbols) {

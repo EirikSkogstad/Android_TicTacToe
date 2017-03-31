@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.zenix.tictactoe.gamelogic.GameBoard;
 import com.example.zenix.tictactoe.R;
+import com.example.zenix.tictactoe.gamelogic.GameBoard;
 
 public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Adapter<GameBoardAdapter.ViewHolder> {
     private GameBoard gameBoard;
@@ -39,7 +39,6 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
         private int gameButtonPosition;
         private int darkerColor;
         private Button gameButton;
-        private boolean hasGameButtonBeenPressed = false;
 
         public ViewHolder(View view) {
             super(view);
@@ -53,19 +52,20 @@ public class GameBoardAdapter extends android.support.v7.widget.RecyclerView.Ada
             gameButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!hasGameButtonBeenPressed) {
-                        gameButton.setText(gameBoard.getCurrentSymbol().toString());
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            gameButton.setBackgroundColor(v.getResources().getColor(R.color.colorLightBlueDarker, null));
-                        } else {
-                            gameButton.setBackgroundColor(v.getResources().getColor(R.color.colorLightBlueDarker));
-                        }
-
-                        gameBoard.updateBoard(gameButtonPosition);
-                        hasGameButtonBeenPressed = true;
-                    }
+                    gameButton.setClickable(false);
+                    gameButton.setText(gameBoard.getCurrentSymbol().toString());
+                    gameBoard.updateBoard(gameButtonPosition);
+                    setGameButtonColor(v);
                 }
             });
+        }
+
+        private void setGameButtonColor(View v) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                gameButton.setBackgroundColor(v.getResources().getColor(R.color.colorLightBlueDarker, null));
+            } else {
+                gameButton.setBackgroundColor(v.getResources().getColor(R.color.colorLightBlueDarker));
+            }
         }
     }
 

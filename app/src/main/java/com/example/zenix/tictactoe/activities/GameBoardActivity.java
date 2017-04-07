@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.zenix.tictactoe.Player;
 import com.example.zenix.tictactoe.R;
 import com.example.zenix.tictactoe.adapters.GameBoardAdapter;
-import com.example.zenix.tictactoe.datastorage.HighScoreDAO;
+import com.example.zenix.tictactoe.datastorage.SQLiteHandler;
 import com.example.zenix.tictactoe.datastorage.IOInterface;
 import com.example.zenix.tictactoe.gamelogic.GameBoard;
 import com.example.zenix.tictactoe.gamelogic.GameSymbol;
@@ -75,7 +75,7 @@ public class GameBoardActivity extends AppCompatActivity {
         recyclerViewGameBoard.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerViewGameBoard.setAdapter(new GameBoardAdapter(new GameBoard(this)));
 
-        this.ioInterface = new HighScoreDAO(this);
+        this.ioInterface = new SQLiteHandler(this);
     }
 
     private void initListeners() {
@@ -125,7 +125,7 @@ public class GameBoardActivity extends AppCompatActivity {
     }
 
     private void saveScores() {
-        ioInterface.addPLayer(currentPlayer);
+        ioInterface.addPlayer(currentPlayer);
     }
 
     private void loadPreviousScores() {

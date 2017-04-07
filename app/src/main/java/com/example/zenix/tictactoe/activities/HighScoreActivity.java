@@ -11,7 +11,8 @@ import android.widget.Button;
 import com.example.zenix.tictactoe.Player;
 import com.example.zenix.tictactoe.R;
 import com.example.zenix.tictactoe.adapters.HighScoreAdapter;
-import com.example.zenix.tictactoe.datastorage.HighScoreDAO;
+import com.example.zenix.tictactoe.datastorage.IOInterface;
+import com.example.zenix.tictactoe.datastorage.SQLiteHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,15 +71,9 @@ public class HighScoreActivity extends AppCompatActivity {
         });
     }
 
-//    private void addTestData(HighScoreDAO highScoreDAO) {
-//        List<Player> data = new ArrayList<>();
-//        data.add(new Player("Cesare7", 50));
-//
-//        highScoreDAO.addPLayer(data);
-//    }
 
     private void loadHighScores() {
-        HighScoreDAO highScoreDAO = new HighScoreDAO(this);
+        IOInterface highScoreDAO = new SQLiteHandler(this);
         scores = highScoreDAO.readAllPlayers();
         if (scores == null) {
             scores = new ArrayList<>();

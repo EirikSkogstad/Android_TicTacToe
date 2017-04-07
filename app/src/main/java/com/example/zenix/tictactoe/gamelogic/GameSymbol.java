@@ -4,7 +4,7 @@ package com.example.zenix.tictactoe.gamelogic;
  * Wrapper class for holding different symbols. X, O and EMPTY.
  * This class should be used as much as as possible, instead of Symbol.
  *
- * Needed so that collections can contain the same, mutable object. FIXME explain.
+ * Needed so that collections can contain the same, mutable object.
  */
 
 public class GameSymbol {

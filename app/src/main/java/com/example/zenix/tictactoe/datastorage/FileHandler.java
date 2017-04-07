@@ -57,7 +57,7 @@
 //     * @param highScores Map containting playername as key, and value as value.
 //     * @throws IOException If problems occur during writing of files.
 //     */
-//    public void addPLayer(Map<String, Integer> highScores) throws IOException {
+//    public void addPlayer(Map<String, Integer> highScores) throws IOException {
 //        if (!highScoreFile.exists()) {
 //            highScoreFile.createNewFile();
 //        }

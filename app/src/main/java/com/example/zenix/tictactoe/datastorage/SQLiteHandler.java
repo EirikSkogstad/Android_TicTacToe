@@ -14,12 +14,12 @@ import java.util.List;
 import static com.example.zenix.tictactoe.datastorage.HighScoreDbSchema.Columns;
 import static com.example.zenix.tictactoe.datastorage.HighScoreDbSchema.HighScoreTable;
 
-public class HighScoreDAO implements IOInterface {
+public class SQLiteHandler implements IOInterface {
 
     private Context applicationContext;
     private SQLiteDatabase database;
 
-    public HighScoreDAO(Context context) {
+    public SQLiteHandler(Context context) {
         this.applicationContext = context.getApplicationContext();
         this.database = new HighScoreHelper(applicationContext).getWritableDatabase();
     }
@@ -34,7 +34,7 @@ public class HighScoreDAO implements IOInterface {
     }
 
     @Override
-    public void addPLayer(Player player) {
+    public void addPlayer(Player player) {
         if (doesPlayerExistInDatabase(player)) {
             updateHighScore(player);
         } else {

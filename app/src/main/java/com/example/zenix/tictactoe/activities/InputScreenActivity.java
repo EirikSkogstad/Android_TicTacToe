@@ -56,6 +56,7 @@ public class InputScreenActivity extends AppCompatActivity {
         if (InputValidator.isEditTextEmpty(editTextPlayerTwo)) {
             return false;
         }
+        // Don't allow two players with the same name.
         if (InputValidator.isEditTextContentEqual(editTextPlayerOne, editTextPlayerTwo)) {
             return false;
         }

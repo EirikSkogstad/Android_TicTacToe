@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">TicTacToe</string>
-    <string name="player_one">PlayerOne:</string>
-    <string name="player_two">Playertwo:</string>
     <string name="error_empty_input">Player names cannot be empty!</string>
     <string name="new_game_text">New Game</string>
     <string name="high_score_text">High Score</string>
@@ -12,4 +10,6 @@
     <string name="player_two_text">Player two:</string>
     <string name="high_scores_heading_text">High Scores:</string>
     <string name="go_back_text">Go Back</string>
+    <string name="playername">PlayerName</string>
+    <string name="playerscore">PlayerScore</string>
 </resources>

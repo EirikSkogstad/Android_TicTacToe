@@ -49,8 +49,8 @@ public class GameBoard {
                 gameBoardActivity.signalDraw();
                 return;
             } else {
-                // Signal activity, currenPlayer == winner.
-                gameBoardActivity.signalWinner(currentSymbol);
+                // Signal activity, currentPlayer == winner.
+                gameBoardActivity.signalWinner();
                 return;
             }
         }

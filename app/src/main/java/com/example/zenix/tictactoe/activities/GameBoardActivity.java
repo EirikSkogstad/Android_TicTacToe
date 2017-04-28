@@ -142,7 +142,7 @@ public class GameBoardActivity extends AppCompatActivity {
         updateCurrentPlayerText();
     }
 
-    public void signalWinner(GameSymbol winningSymbol) {
+    public void signalWinner() {
         Toast.makeText(this, currentPlayer.getPlayerName() + " has won!", Toast.LENGTH_SHORT).show();
         currentPlayer.setPlayerScore(currentPlayer.getPlayerScore() + 1);
         saveScores();

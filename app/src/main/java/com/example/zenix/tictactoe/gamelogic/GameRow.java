@@ -1,6 +1,7 @@
 package com.example.zenix.tictactoe.gamelogic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GameRow {
     private ArrayList<GameSymbol> symbols;
@@ -18,9 +19,7 @@ public class GameRow {
 
     private void addSymbolsToList(GameSymbol[] symbols) {
         this.symbols = new ArrayList<>();
-        for (GameSymbol symbol : symbols) {
-            this.symbols.add(symbol);
-        }
+        Collections.addAll(this.symbols, symbols);
     }
 
     public boolean isFilled() {
